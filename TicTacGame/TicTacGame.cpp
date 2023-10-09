@@ -25,10 +25,17 @@ void printBoard(const char board[3][3]) {
         }
     }
 }
+//Крестик или нолик Task 11
+void playGame() {
+    char board[3][3];
+    initializeBoard(board);
+    char currentPlayer = 'X';
+    printBoard(board);
+}
+
 int main() {
     setlocale(LC_ALL, "ru");
-    char board[3][3];
-    printBoard(board);
+    playGame();
     return 0;
 }
 
