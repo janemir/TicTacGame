@@ -2,11 +2,36 @@
 //
 
 #include <iostream>
-
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+//Игровое поле Task 9
+void initializeBoard(char board[3][3]) {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            board[i][j] = ' ';
+        }
+    }
 }
+void printBoard(const char board[3][3]) {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            cout << board[i][j];
+            if (j < 2) {
+                cout << " | ";
+            }
+        }
+        cout << endl;
+        if (i < 2) {
+            cout << "---------" << endl;
+        }
+    }
+}
+int main() {
+    setlocale(LC_ALL, "ru");
+    char board[3][3];
+    printBoard(board);
+    return 0;
+}
+
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
