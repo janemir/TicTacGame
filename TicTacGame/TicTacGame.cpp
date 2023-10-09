@@ -81,9 +81,29 @@ void playGame() {
         else {
             cout << "Некорректный ход! Попробуйте снова." << endl;
         }
+        //Проверка на ничью Task 14
+        if (!gameOver) {
+            bool isBoardFull = true;
+            for (int i = 0; i < 3; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                    if (board[i][j] == ' ') {
+                        isBoardFull = false;
+                        break;
+                    }
+                }
+                if (!isBoardFull) {
+                    break;
+                }
+            }
+            if (isBoardFull) {
+                cout << "Ничья!" << endl;
+                gameOver = true;
+            }
+        }
     }
     printBoard(board);
 }
+
 
 int main() {
     setlocale(LC_ALL, "ru");
