@@ -25,6 +25,15 @@ void printBoard(const char board[3][3]) {
         }
     }
 }
+//Совершение хода игроками поочередно Task 13
+bool makeMove(char board[3][3], int row, int col, char currentPlayer) {
+    if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row][col] != ' ') {
+        return false;
+    }
+    board[row][col] = currentPlayer;
+    return true;
+}
+
 //Проверка победителя Тask 12
 bool checkWin(const char board[3][3], char currentPlayer) {
     for (int i = 0; i < 3; ++i) {
@@ -49,6 +58,30 @@ void playGame() {
     char board[3][3];
     initializeBoard(board);
     char currentPlayer = 'X';
+    bool gameOver = false;
+    while (!gameOver) {
+        printBoard(board);
+        int row, col;
+        cout << "Ход игрока " << currentPlayer << ". Введите номер строки (0-2): ";
+        cin >> row;
+        cout << "Ход игрока " << currentPlayer << ". Введите номер столбца (0-2): ";
+        cin >> col;
+        if (makeMove(board, row, col, currentPlayer)) {
+            if (checkWin(board, currentPlayer)) {
+                cout << "Игрок " << currentPlayer << " победил!" << endl;
+                gameOver = true;
+            }
+            else if (currentPlayer == 'X') {
+                currentPlayer = 'O';
+            }
+            else {
+                currentPlayer = 'X';
+            }
+        }
+        else {
+            cout << "Некорректный ход! Попробуйте снова." << endl;
+        }
+    }
     printBoard(board);
 }
 
